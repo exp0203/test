@@ -17,7 +17,7 @@ CMD="w"
 eval $CMD >> $NAME
 echo "----" >> $NAME
 
-CMD="lastlog | grep -v Never"
+CMD="lastlog | grep pts"
 eval $CMD >> $NAME
 echo "Total: `eval $CMD | wc -l`" >> $NAME
 echo "----" >> $NAME
