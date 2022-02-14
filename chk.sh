@@ -31,6 +31,11 @@ CMD="last"
 eval $CMD >> $NAME
 echo "----" >> $NAME
 
+CMD="netstat -plnt | grep -v Internet | grep -v Proto"
+eval $CMD >> $NAME
+echo "Total: `eval $CMD | wc -l`" >> $NAME
+echo "----" >> $NAME
+
 CMD="netstat -anpt | grep -v SYN | grep -v ACK | grep -v WAIT | grep -v Internet | grep -v Proto | awk '{print \$7}' | cut -d '/' -f 2 | sort -u"
 eval $CMD >> $NAME
 echo "Total: `eval $CMD | wc -l`" >> $NAME
