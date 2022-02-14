@@ -33,12 +33,13 @@ CMD="ls -la /tmp"
 eval $CMD >> $NAME
 echo "----" >> $NAME
 
-CMD="pstree -a"
+CMD="ps axjf"
 eval $CMD >> $NAME
 echo "----" >> $NAME
 
-CMD="lsmod"
+CMD="lsmod | grep -v Size"
 eval $CMD >> $NAME
+echo "Total: `eval $CMD | wc -l`" >> $NAME
 echo "----" >> $NAME
 
 CMD="find / -perm /4000"
